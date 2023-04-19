@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="intro">Modifier un commentaire</h1>
+
+<li class="write-new">
+
+    <form action="{{ url_for('edit_comment', comment_id=comment.id)}}" method="post">
+        <textarea placeholder="Edit comment" name="comment">{{ comment.content }}</textarea>
+        <div>
+            <img src="{{url_for('static',filename='images/anonym.png')}}" width="35" alt="Profile of Jane Doe"
+                title="User" />
+            <button type="submit">Modifier</button>
+
+        </div>
+    </form>
+
+</li>
+
+{% endblock %}

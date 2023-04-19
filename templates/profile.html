@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="intro">Bienvenue {{ name }}!</h1>
+<ul class="comment-section">
+    {% for comment in all_comments %}
+
+    <li class="comment user-comment">
+        <div class="info">
+            <a href="#">{{ comment.author }}</a>
+            <span>{{ comment.pub_date.strftime('%d-%m-%Y') }}</span>            
+        </div>
+        <a class="avatar" href="#">
+            <img src="{{url_for('static',filename='images/anonym.png')}}" width="35" alt="Profile Avatar"
+                title="User" />
+        </a>
+        <p>{{ comment.content }}</p>
+
+        {% if name == comment.author %}       
+        <form action="{{ url_for('edit_page', comment_id=comment.id)}}" method="get">
+            <button type="submit">Edit</button>
+        </form>
+        <form action="{{ url_for('delete_comment', comment_id=comment.id)}}" method="post">
+            &nbsp<button type="submit" style="background-color:lightcoral;">&nbspDelete</button>
+        </form>
+        {% else %}
+        {% endif %}
+        
+    </li>
+    {% endfor %}
+</ul>
+
+
+<li class="write-new">
+
+    <form action="/add-comment" method="post">
+        <textarea placeholder="Write your comment here" name="comment"></textarea>
+        <div>
+            <img src="{{url_for('static',filename='images/anonym.png')}}" width="35" alt="Profile of Jane Doe"
+                title="User" />
+            <button type="submit">Submit</button>
+
+        </div>
+    </form>
+
+</li>
+
+{% endblock %}

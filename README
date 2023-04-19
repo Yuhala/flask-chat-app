@@ -1,0 +1,21 @@
+## Flask chat application
+- This is a very simple chat thread application using Flask framework.
+
+## Testing
+- Activate the Python virtual environment.
+```
+source chatenv/bin/activate
+```
+- Uncomment lines `54`-`56` of [chat.py](./chat.py) to create db when application is launched.
+- Run the application
+```
+flask --app chat run
+```
+- Create a user (email unique) and start adding comment. 
+- Try running application in a different browser with different user.
+- Have fun
+
+## TODO 
+- Login functionality
+- User profile pictures
+- Styling
